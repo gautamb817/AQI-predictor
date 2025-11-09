@@ -53,3 +53,12 @@ Thumbs.db
 *.orig
 .vscode/
 .idea/
+
+
+# Large model & data backups
+backup_models/
+lstm_aqi_model.h5
+lstm_aqi_model_quantized.tflite
+Live_AQI_API_Data.csv
+Live_AQI_with_Predictions.csv
+
