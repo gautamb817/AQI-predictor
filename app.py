@@ -14,31 +14,33 @@ from tflite_runtime.interpreter import Interpreter
 # -----------------------------
 # ðŸ§  Load trained model and scaler
 # -----------------------------
-from tflite_runtime.interpreter import Interpreter
-import numpy as np
-import joblib
 import streamlit as st
+import tensorflow as tf
+import joblib
 
+@st.cache_resource
 def load_model():
-    interpreter = tf.lite.Interpreter(model_path="lstm_aqi_model_optimized.tflite")
-    interpreter.allocate_tensors()
-    return interpreter
+    """
+    Load the trained LSTM model (.h5) and its corresponding scaler.
+    This runs only once due to Streamlit caching.
+    """
+    try:
+        model = tf.keras.models.load_model("lstm_aqi_model.h5", compile=False)
+        st.success("✅ Model loaded successfully!")
+    except Exception as e:
+        st.error(f"❌ Error loading model: {e}")
+        model = None
 
-model = load_model()
+    try:
+        scaler = joblib.load("lstm_scaler.save")
+        st.info("Scaler loaded successfully.")
+    except Exception as e:
+        st.warning(f"Scaler not found: {e}")
+        scaler = None
 
-try:
-    scaler = joblib.load("lstm_scaler.save")
-except:
-    scaler = None
+    return model, scaler
 
-def predict_aqi(interpreter, input_data):
-    input_details = interpreter.get_input_details()
-    output_details = interpreter.get_output_details()
-
-    interpreter.set_tensor(input_details[0]['index'], np.array(input_data, dtype=np.float32))
-    interpreter.invoke()
-    prediction = interpreter.get_tensor(output_details[0]['index'])
-    return prediction
+model, scaler = load_model()
 
 
 # -----------------------------
