@@ -41,6 +41,19 @@ def load_model():
     return model, scaler
 
 model, scaler = load_model()
+import numpy as np
+
+def predict_aqi(model, input_data):
+    """
+    Make an AQI prediction using the loaded LSTM model.
+    input_data must be shaped as (1, timesteps, features)
+    """
+    try:
+        prediction = model.predict(np.array(input_data))
+        return prediction[0]
+    except Exception as e:
+        st.error(f"Prediction failed: {e}")
+        return None
 
 
 # -----------------------------
