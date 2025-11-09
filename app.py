@@ -19,9 +19,8 @@ import numpy as np
 import joblib
 import streamlit as st
 
-@st.cache_resource
 def load_model():
-    interpreter = Interpreter(model_path="lstm_aqi_model_optimized.tflite")
+    interpreter = tf.lite.Interpreter(model_path="lstm_aqi_model_optimized.tflite")
     interpreter.allocate_tensors()
     return interpreter
 
@@ -32,7 +31,6 @@ try:
 except:
     scaler = None
 
-# Helper function for making predictions
 def predict_aqi(interpreter, input_data):
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
