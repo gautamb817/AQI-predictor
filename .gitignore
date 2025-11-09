@@ -1,0 +1,55 @@
+# ===============================
+# 🔒 Environment and Secrets
+# ===============================
+.env
+*.env
+__pycache__/
+.DS_Store
+
+# ===============================
+# ⚙️ Model & Checkpoint Files
+# (uncomment if your model is large >100MB)
+# ===============================
+*.h5
+*.save
+*.tflite
+*.hdf5
+*.pb
+*.ckpt*
+
+# ===============================
+# 📊 Data Files
+# (ignore raw or intermediate CSVs)
+# ===============================
+Live_AQI_API_Data.csv
+Live_AQI_with_Predictions.csv
+*.tmp
+*.log
+
+# ===============================
+# 🧪 Jupyter & Kaggle files
+# ===============================
+.ipynb_checkpoints/
+*.ipynb
+/kaggle/working/*
+/kaggle/temp/*
+
+# ===============================
+# 🚀 Build / Deployment Files
+# ===============================
+node_modules/
+venv/
+__pycache__/
+*.egg-info/
+*.spec
+
+# ===============================
+# 💻 OS & IDE Artifacts
+# ===============================
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.orig
+.vscode/
+.idea/

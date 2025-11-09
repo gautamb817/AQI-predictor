@@ -1,0 +1,28 @@
+{
+    "Model_Name": "LSTM AQI Forecasting Model",
+    "Original_Model": {
+        "Format": "Keras (.h5)",
+        "Path": "/kaggle/input/model_delhi/lstm_aqi_model.h5",
+        "Size_KB": null
+    },
+    "Optimized_Model": {
+        "Format": "TensorFlow Lite (.tflite)",
+        "Path": "/kaggle/working/lstm_aqi_model_optimized.tflite",
+        "Size_KB": 145.37
+    },
+    "Quantized_Model": {
+        "Format": "TensorFlow Lite Quantized (.tflite)",
+        "Path": "/kaggle/working/lstm_aqi_model_quantized.tflite",
+        "Size_KB": 62.18
+    },
+    "Optimization_Methods": [
+        "TensorFlow Lite Conversion (Select TF Ops)",
+        "Dynamic Range Quantization (8-bit weights)"
+    ],
+    "Optimization_Benefits": [
+        "Reduced model size",
+        "Faster inference, especially on IoT/Edge devices",
+        "Lower memory usage and power consumption",
+        "Preserved predictive accuracy"
+    ]
+}
